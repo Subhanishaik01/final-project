@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+  <title>Add to Cart Page</title>
+</head>
+<style>
+body{
+    background-image: url('h2.avif');
+    background-size: cover;
+    color:aqua;
+}
+</style>
+<script>
+    // script.js
+document.addEventListener('DOMContentLoaded', function() {
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  const checkoutForm = document.getElementById('checkout-form');
+  const phoneInput = document.getElementById('phone');
+  const emailInput = document.getElementById('email');
+  const addressInput = document.getElementById('address');
+  const cartItemsElement = document.getElementById('cart-items');
+  const cartTotalElement = document.getElementById('cart-total');
+  let cart = [];
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const product = button.dataset.product;
+      const price = parseFloat(button.dataset.price);
+      const quantityInput = button.parentElement.querySelector('input[type="number"]');
+      const quantity = parseInt(quantityInput.value);
+      addToCart(product, price, quantity);
+    });
+  });
+  checkoutForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const phoneNumber = phoneInput.value;
+    const email = emailInput.value;
+    const address = addressInput.value;
+    if (!phoneNumber.match(/^\d{10}$/)) {
+      alert('Please enter a valid 10-digit phone number.');
+      return;
+    }
+    placeOrder(phoneNumber, email, address);
+  });
+});
+
+  </script>
+</head>
+<body>
+  <body> <a href="C:\Users\slv\Desktop\Project\Hometrail.html">HOME</a></body>
+  <form action="C:\Users\slv\Desktop\Project\buynow.html" method="post">
+  <center>
+  <h1>Add to Cart Page</h1>
+  <div class="checkout">
+    <h2>Checkout</h2>
+    <form id="checkout-form">
+      <label for="phone">Phone Number:</label><br>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" autofocusrequired pattern="[0-9]{10}"><br><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" placeholder="Enter valid email" autofocus required><br><br>
+      <label for="address">Address:</label><br>
+      <textarea id="address" name="address" required></textarea><br><br>
+      <label for="items">items</label><br>
+      <input type="item" id="item" name="item" placeholder="Number of items" autofocus required><br><br>
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+</form>
+</center>
+</body>
+</html>

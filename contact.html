@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+</style>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('d.jpg');
+    background-size: cover;
+    color:black;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.contact-form {
+    padding: 20px;
+    border-radius: 5px;
+}
+
+label,
+input,
+textarea {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input,
+textarea {
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 50%;
+    padding: 10px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color:rgb(220, 20, 130);
+}
+</style>
+<body>
+    <body> <a href="C:\Users\slv\Desktop\Project\navbar.html">HOME</a></body>
+    
+    <div class="container">
+        <h1>CONTACT US</h1>
+        <div class="contact-form">
+            <form action="contact.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" autofocus required>
+                <label for="phone number">Phone number</label>
+                <input type="text" id="number" name="phone number" placeholder="Enter your phone number" autofocus required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your valid email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Inbox here" autofocus required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

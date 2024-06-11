@@ -1,0 +1,221 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Shoes</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .product img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product h2 {
+            margin-top: 10px;
+        }
+
+        .product p {
+            font-weight: bold;
+        }
+
+        select {
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 20% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+       <form action="C:\Users\slv\Desktop\Project\add to cart.html">
+    
+    <header>
+        <h1>Shoe Wear</h1>
+        <nav>
+            <ul>
+                <li><a href="C:\Users\slv\Desktop\Project\navbar.html">Home</a></li>
+                <li><a href="C:\Users\slv\Desktop\Project\Trail2.html">Products</a></li>
+                <li><a href="C:\Users\slv\Desktop\Project\contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="product-grid">
+            <!-- Product containers will be dynamically generated here -->
+        </section>
+    </main>
+       </form>
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="" alt="Product Image" id="modal-img">
+            <h2 id="modal-title"></h2>
+            <p id="modal-price"></p>
+            <button class="add-to-cart-modal">Add to Cart</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Shoe Wear. All rights reserved.</p>
+    </footer>
+    <script>
+        // JavaScript code
+        const products = [
+            { id: 1, name: "Stylish Sneakers", price: 50, image: "stylish.jpg", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 2, name: "Classic Boots", price: 65, image: "boot.jpg", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 3, name: "Bata shoe", price: 50, image: "bata.jpeg", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 4, name: "NIKE sandals", price: 50, image: "nike sandals.webp", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 5, name: "Sneakers", price: 50, image: "sneakers2.jpg", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 6, name: "Crocs/womens", price: 50, image: "Crocs2.jpg", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 7, name: "Shoeneeds", price: 50, image: "shoeneeds.jpg", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 8, name: "Crocs/Men", price: 50, image: "crocs.jpeg", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 9, name: "Puma", price: 50, image: "Puma slipper.jpg", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 10, name: "Crocs/flower blossom", price: 50, image: "crocs3.avif", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 11, name: "Diesel for men", price: 50, image: "diesel.webp", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 12, name: "Shoetopia", price: 50, image: "shoetopia.png", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 13, name: "Women footware", price: 50, image: "women footware.jpg", sizes: ["6", "7", "8", "9", "10"] },
+            { id: 14, name: "Single shoe/ladies", price: 50, image: "single shoe.jpg", sizes: ["6", "7", "8", "9", "10"] },
+            // Add more products as needed
+        ];
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const productGrid = document.querySelector(".product-grid");
+            const modal = document.getElementById("product-modal");
+            const modalImg = document.getElementById("modal-img");
+            const modalTitle = document.getElementById("modal-title");
+            const modalPrice = document.getElementById("modal-price");
+
+            products.forEach(product => {
+                const productElement = document.createElement("div");
+                productElement.classList.add("product");
+                productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h2>${product.name}</h2>
+                    <p>$${product.price.toFixed(2)}</p>
+                    <select class="size-select">
+                        ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                    </select>
+                    <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
+                `;
+                productGrid.appendChild(productElement);
+            });
+
+            const addToCartButtons = document.querySelectorAll(".add-to-cart");
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", addToCart);
+            });
+
+            
+
+            document.querySelector(".close").addEventListener("click", closeModal);
+
+            function addToCart(event) {
+                const productId = parseInt(event.target.dataset.id);
+                const product = products.find(p => p.id === productId);
+                const selectedSize = event.target.parentElement.querySelector('.size-select').value;
+                alert(`Product ${productId} - Size ${selectedSize} added to cart`);
+            }
+
+            
+            function closeModal() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    closeModal();
+                }
+            };
+        });
+    </script>
+    </form>
+</body>
+</html>

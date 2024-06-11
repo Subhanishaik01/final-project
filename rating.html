@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Us - Flower Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+body{
+    padding-top:200px;
+    color:darkgoldenrod;
+    background-image: url('rate.jpg');
+    background-size: cover;
+}
+</style>
+<body>
+    <body> <a href="C:\Users\slv\Desktop\Project\navbar.html">HOME</a></body>
+    <form action=".html" method="post"></form>
+    <center>
+    <div class="container">
+        <h1>Rate Us</h1>
+        <p>We would love to hear your feedback!</p>
+        <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5"><label for="star5">★★★★★ Excellent</label><br>
+            <input type="radio" id="star4" name="rating" value="4"><label for="star4">★★★★ Good</label><br>
+            <input type="radio" id="star3" name="rating" value="3"><label for="star3">★★★ Average</label><br>
+            <input type="radio" id="star2" name="rating" value="2"><label for="star2">★★ Fair</label><br>
+            <input type="radio" id="star1" name="rating" value="1"><label for="star1">★ Poor</label><br>
+        </div>
+        <br><br>
+        <textarea id="feedback" placeholder="Enter your feedback"></textarea><br><br>
+        <button onclick="submitFeedback()">Submit</button>
+        <p id="thankyou" style="display:none;">Thank you for your feedback!</p>
+    </div>
+    </center>
+    <script src="script.js"></script>
+</body>
+</html>
